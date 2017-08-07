@@ -7,13 +7,15 @@
 var wins = 0;
 var losses = 0;
 var guessesLeft = 10;
+//
 var cpuLetter = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 var gameOver = false;
 var lettersGuessed = [];
 
+var gameStart = function() {
+	var computerGuess = cpuLetter[Math.floor(Math.random()*cpuLetter.length)];
+};
 var computerGuess = cpuLetter[Math.floor(Math.random()*cpuLetter.length)];
-		
-
 		console.log(computerGuess);
 
 
@@ -25,17 +27,22 @@ var computerGuess = cpuLetter[Math.floor(Math.random()*cpuLetter.length)];
 		if ((userGuess==computerGuess)) {
 			gameOver = true;
 			wins++;
-			alert('Wins: ' + wins);
+			
 
 }		else {
 		guessesLeft--;
-		alert('Guess another Letter');
+		
 }
 		if (guessesLeft==0) {
 			gameOver = true;
 			losses++;
-			alert('You Lose');
 		}
+
+		if (gameOver==true) {
+				gameStart();
+		}
+	
+		
 		
 		var html = "<p>Guess what letter im thinking of</p>" + 
 		"<p>wins: " + wins + "</p>" +
@@ -44,5 +51,6 @@ var computerGuess = cpuLetter[Math.floor(Math.random()*cpuLetter.length)];
 
 
 		document.querySelector('#game').innerHTML = html;
+		
 
 	};
