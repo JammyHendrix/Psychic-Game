@@ -12,20 +12,29 @@ var cpuLetter = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'
 var gameOver = false;
 var lettersGuessed = [];
 
-var gameStart = function() {
-	var computerGuess = cpuLetter[Math.floor(Math.random()*cpuLetter.length)];
-};
+
 var computerGuess = cpuLetter[Math.floor(Math.random()*cpuLetter.length)];
 		console.log(computerGuess);
 
-
+		//Key typed
 	document.onkeyup = function() {
 		var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
 		console.log(userGuess);
 
+		//RESET GAME
+		function reset() {
+		computerGuess=cpuLetter[Math.floor(Math.random() * cpuLetter.length)];
+		console.log(computerGuess);
+
+		guessesLeft=10;
+		gameOver=false;
+
+	}
+
+
 		if ((userGuess==computerGuess)) {
-			gameOver = true;
+			gameOver=true;
 			wins++;
 			
 
@@ -34,13 +43,14 @@ var computerGuess = cpuLetter[Math.floor(Math.random()*cpuLetter.length)];
 		
 }
 		if (guessesLeft==0) {
-			gameOver = true;
+			gameOver=true;
 			losses++;
 		}
 
 		if (gameOver==true) {
-				gameStart();
+				reset();
 		}
+	
 	
 		
 		
