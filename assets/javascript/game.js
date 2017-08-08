@@ -29,6 +29,7 @@ var computerGuess = cpuLetter[Math.floor(Math.random()*cpuLetter.length)];
 
 		guessesLeft=10;
 		gameOver=false;
+		lettersGuessed=[];
 
 	}
 
@@ -36,7 +37,7 @@ var computerGuess = cpuLetter[Math.floor(Math.random()*cpuLetter.length)];
 		if ((userGuess==computerGuess)) {
 			gameOver=true;
 			wins++;
-			
+			alert("It was "+ computerGuess);
 
 }		else {
 		guessesLeft--;
@@ -51,13 +52,14 @@ var computerGuess = cpuLetter[Math.floor(Math.random()*cpuLetter.length)];
 				reset();
 		}
 	
-	
+		lettersGuessed.push(userGuess);
 		
 		
 		var html = "<p>Guess what letter im thinking of</p>" + 
 		"<p>wins: " + wins + "</p>" +
 		"<p>losses: " + losses + "</p>" +
-		"<p>Guesses Left: " + guessesLeft + "</p>";
+		"<p>Guesses Left: " + guessesLeft + "</p>" + 
+		"<p>Letters Guessed: " + lettersGuessed + "</p>";
 
 
 		document.querySelector('#game').innerHTML = html;
